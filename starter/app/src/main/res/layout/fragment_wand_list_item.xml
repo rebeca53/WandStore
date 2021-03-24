@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="wand"
+            type="com.udacity.wandstore.models.Wand" />
+    </data>
+    <!--Using Constraint layout because views are positioned in relation to each other. -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/itemName"
+            style="@style/griffindor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="casual"
+            android:text="@={wand.name}"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Potter" />
+
+        <TextView
+            android:id="@+id/itemSize"
+            style="@style/griffindor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:text="@{@string/length_item_text(wand.length)}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/itemName"
+            app:layout_constraintTop_toBottomOf="@+id/itemName"
+            tools:text="33 cm" />
+
+        <TextView
+            android:id="@+id/itemWood"
+            style="@style/griffindor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:fontFamily="casual"
+            android:text="@{@string/wood_item_text(wand.wood)}"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/itemSize"
+            app:layout_constraintStart_toEndOf="@+id/itemSize"
+            tools:text="Oak" />
+
+        <TextView
+            android:id="@+id/itemCore"
+            style="@style/wand_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/core_item_text(wand.core)}"
+            app:layout_constraintStart_toStartOf="@+id/itemSize"
+            app:layout_constraintTop_toBottomOf="@+id/itemSize"
+            tools:text="Phoenix Feather" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
